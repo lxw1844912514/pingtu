@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<link rel="stylesheet" href="./base.css">
+<script src="./jquery-3.4.1.min.js"></script>
+<style>
+  .box {
+    margin: 0 auto;
+  }
+
+  * {
+    touch-action: none;
+  }
+
+  .content {
+    width: 100%;
+    height: 100%;
+  }
+
+  .text {
+    width: 750px;
+    margin: 40px auto 20px;
+    text-align: center;
+    border: dashed 1px #000;
+  }
+
+  .showbox {
+    width: 750px;
+    height: 1334px;
+    border: 1px dashed #000;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .showpre {
+    position: absolute;
+  }
+
+  .showtext {
+    position: absolute;
+    z-index: 10;
+  }
+
+  .pre {
+    width: 100%;
+    height: 100%;
+  }
+
+  .data {
+    padding: 2px;
+    margin: 5px auto;
+    width: 750px;
+    word-wrap: break-word;
+    border: 1px solid #000;
+  }
+</style>
+
+<body>
+  <div class="box">
+    <div class="content">
+      <div class="showbox">
+      </div>
+    </div>
+    <div class="data"></div>
+  </div>
+</body>
+<script>
+  var hh = sessionStorage.getItem("allJson"); //获取键为allJson的字符串
+  var lt = JSON.parse(hh);
+  var pp = lt.DataList[0].elements; //将字符串抓换成对象
+  var tt = lt.DataList[1].elements; //将字符串抓换成对象
+  $('.data').text(hh);
+
+  console.log(lt)
+  $(pp).each(function (idx, ele) {
+    console.log(ele.constraints.height.percentage);
+    $('<div>', {
+      class: 'showpre',
+      id: 'showpre' + (ele.id + 1),
+      height: ele.constraints.height.percentage * 2 + 'px',
+      width: ele.constraints.width.percentage * 2 + 'px',
+      style: 'width:' + ele.constraints.width.percentage * 2 + 'px' + ';' + 'height:' + ele.constraints.height
+        .percentage * 2 + 'px' + ';' + 'left:' + parseFloat(ele
+          .constraints.left
+          .percentage * 2) + 'px' +
+        ';' + 'top:' + parseFloat(ele
+          .constraints.top.percentage * 2) + 'px',
+    }).appendTo('.showbox');
+    $('<img>', {
+      class: 'pre',
+      id: 'pre' + (ele.id + 1),
+      src: ele.filesrc
+    }).appendTo('#showpre' + (ele.id + 1));
+  })
+
+  $(tt).each(function (idx, ele) {
+    $('<div>', {
+      class: 'showtext',
+      id: 'showtext' + (ele.id + 1),
+      text: ele.text,
+      style: 'color:' + ele.color + ';' + 'font-size:' + parseInt(ele.text_size) * 2 + 'px' + ';' + 'left:' +
+        parseFloat(ele.constraints.left
+          .percentage * 2) + 'px' +
+        ';' + 'top:' + parseFloat(ele
+          .constraints.top.percentage * 2) + 'px',
+    }).appendTo('.showbox');
+  })
+
+  $(lt.DataList[0].elements).each(function (i, e) {
+    delete($(e)[0]['filesrc']);
+    // console.log($(e)[0]);
+  })
+  lt = JSON.stringify(lt);
+  $('.data').text(lt);
+</script>
+
+</html>

@@ -1,0 +1,110 @@
+ .box {
+   margin: 0 auto;
+ }
+
+ * {
+   touch-action: none;
+ }
+
+ .btn {
+   display: inline-block;
+   width: 50px;
+   height: 30px;
+   background: #000;
+   color: #fff;
+   font-size: 20px;
+   text-align: center;
+   line-height: 30px;
+   cursor: pointer;
+ }
+
+ .selectText {
+   width: 750px;
+   margin: 40px auto 20px;
+   text-align: center;
+   position: relative;
+ }
+
+ .selectfile {
+   width: 800px;
+   margin: 0 auto;
+   text-align: center;
+ }
+
+ #uploadfile {
+   display: block;
+   cursor: pointer;
+   margin: 0 auto;
+   width: 100px;
+   height: 20px;
+ }
+
+ #editableText {
+   margin: 0 auto;
+ }
+
+ .fbtn {
+   position: absolute;
+   bottom: -22px;
+   right: 176px;
+   background-color: royalblue;
+   text-decoration: none;
+   border: none;
+ }
+
+ #uploadfile {
+   outline: none;
+   border: none;
+ }
+
+ .workarea {
+   width: 375px;
+   height: 667px;
+   /* height: 1334px; */
+   border: 1px dashed #000;
+   margin: 0 auto;
+   position: relative;
+ }
+
+ .prebox {
+   width: 187.5px;
+   /* height: 333.5px; */
+   position: absolute;
+ }
+
+ .preview {
+   width: 100%;
+   height: 100%;
+   cursor: move;
+ }
+
+ .scale {
+   width: 10px;
+   height: 10px;
+   overflow: hidden;
+   cursor: se-resize;
+   position: absolute;
+   right: 0;
+   bottom: 0;
+   /* background-color: rgb(122, 191, 238); */
+ }
+
+ .commit {
+   width: 500px;
+   margin: 10px auto;
+   text-align: right;
+
+ }
+
+ .textbox {
+   padding: 3px;
+   /* border: 1px dashed #000; */
+   text-align: center;
+   position: absolute;
+   z-index: 10;
+   cursor: move;
+ }
+
+ .com_btn {
+   background-color: royalblue;
+ }
